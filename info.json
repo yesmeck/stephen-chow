@@ -1,0 +1,10 @@
+{
+  "siteName": "Stephen Chow",
+  "author": "Meck <yesmeck@gmail.com>",
+  "posts": {
+    "categories": [],
+    "posts":[
+      {"title": "other hello world", "file": "2012-03-23", "cate":"other"}
+    ]
+  }
+}
