@@ -4,9 +4,6 @@ define(['mediator', 'lib/utils'], function(mediator, utils) {
   'use strict';
   var ApplicationView;
   return ApplicationView = (function() {
-    var siteTitle;
-
-    siteTitle = 'Chaplin Example Application';
 
     ApplicationView.prototype.previousController = null;
 
@@ -22,13 +19,18 @@ define(['mediator', 'lib/utils'], function(mediator, utils) {
 
     ApplicationView.prototype.url = null;
 
-    function ApplicationView() {
+    function ApplicationView(siteTitle) {
+      if (siteTitle == null) siteTitle = 'Stephen Chow';
       this.openLink = __bind(this.openLink, this);
       this.removeFallbackContent = __bind(this.removeFallbackContent, this);
       this.startupController = __bind(this.startupController, this);
       this.matchRoute = __bind(this.matchRoute, this);
       this.logout = __bind(this.logout, this);
-      this.login = __bind(this.login, this);      if (!mediator.user) this.logout();
+      this.login = __bind(this.login, this);
+      this.siteTitle = siteTitle;
+      console.log(this.siteTitle);
+      $('#siteTitle').html(this.siteTitle);
+      if (!mediator.user) this.logout();
       mediator.subscribe('matchRoute', this.matchRoute);
       mediator.subscribe('!startupController', this.startupController);
       mediator.subscribe('login', this.login);

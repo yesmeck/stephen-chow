@@ -13,8 +13,11 @@ define(['controllers/controller', 'views/application_view', 'controllers/navigat
     }
 
     ApplicationController.prototype.initialize = function() {
-      this.initApplicationView();
-      return this.initSidebars();
+      var _this = this;
+      return $.getJSON('info.json', function(data) {
+        _this.initApplicationView(data.siteName);
+        return _this.initSidebars(data.posts);
+      });
     };
 
     ApplicationController.prototype.initApplicationView = function() {

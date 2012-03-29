@@ -4,11 +4,6 @@ define ['mediator', 'lib/utils'], (mediator, utils) ->
 
   class ApplicationView # Do not inherit from View
 
-    # Set your application name here so
-    # the document title is set properly to
-    # “Site title – Controller title” (see adjustTitle)
-    siteTitle = 'Chaplin Example Application'
-
     previousController: null
 
     # The current controller, its name, main view and parameters
@@ -21,7 +16,12 @@ define ['mediator', 'lib/utils'], (mediator, utils) ->
     # The current URL
     url: null
 
-    constructor: ->
+    constructor: (siteTitle = 'Stephen Chow') ->
+
+      @siteTitle = siteTitle
+      console.log @siteTitle
+      $('#siteTitle').html(@siteTitle)
+
       @logout() unless mediator.user
 
       # Listen to global events
