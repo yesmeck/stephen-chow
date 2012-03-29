@@ -7,11 +7,13 @@ define [
   class ApplicationController extends Controller
     initialize: ->
       $.getJSON 'info.json', (data) =>
-        @initApplicationView(data.siteName)
-        @initSidebars(data.posts)
+        @siteTitle = data.siteTitle
+        @posts = data.posts
+        @initApplicationView()
+        @initSidebars()
 
-    initApplicationView: ->
-      new ApplicationView()
+    initApplicationView: () ->
+      new ApplicationView(@siteTitle)
 
     initSidebars: ->
       new NavigationController()

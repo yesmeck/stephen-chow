@@ -15,13 +15,15 @@ define(['controllers/controller', 'views/application_view', 'controllers/navigat
     ApplicationController.prototype.initialize = function() {
       var _this = this;
       return $.getJSON('info.json', function(data) {
-        _this.initApplicationView(data.siteName);
-        return _this.initSidebars(data.posts);
+        _this.siteTitle = data.siteTitle;
+        _this.posts = data.posts;
+        _this.initApplicationView();
+        return _this.initSidebars();
       });
     };
 
     ApplicationController.prototype.initApplicationView = function() {
-      return new ApplicationView();
+      return new ApplicationView(this.siteTitle);
     };
 
     ApplicationController.prototype.initSidebars = function() {

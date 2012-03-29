@@ -16,10 +16,8 @@ define ['mediator', 'lib/utils'], (mediator, utils) ->
     # The current URL
     url: null
 
-    constructor: (siteTitle = 'Stephen Chow') ->
+    constructor: (@siteTitle = 'Stephen Chow') ->
 
-      @siteTitle = siteTitle
-      console.log @siteTitle
       $('#siteTitle').html(@siteTitle)
 
       @logout() unless mediator.user
