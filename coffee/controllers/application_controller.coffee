@@ -1,6 +1,6 @@
 define [
   'controllers/controller', 'views/application_view',
-  'controllers/navigation_controller', 'controllers/sidebar_controller'
+  'controllers/navigation_controller'
 ], (Controller, ApplicationView, NavigationController, SidebarController) ->
   'use strict'
 
@@ -14,5 +14,4 @@ define [
 
     initSidebars: ->
       new NavigationController()
-      new SidebarController()
 
